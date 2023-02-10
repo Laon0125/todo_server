@@ -46,4 +46,18 @@ class DevApplicationTests {
 		TokenInfo info = securityService.parseToken(token);
 		System.out.println(info.toString());
 	}
+
+
+	@Test
+	void builderTest() {
+		Members member = Members
+				.builder()
+				.id(1)
+				.member_id("park")
+				.member_pw("1234")
+				.name("park")
+				.phone_number("01022222222")
+				.build();
+		System.out.println(member);
+	}
 }
