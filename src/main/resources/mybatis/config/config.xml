@@ -10,5 +10,6 @@
     </typeAliases>
     <mappers>
         <mapper resource="mybatis/mapper/memberMapper.xml"></mapper>
+        <mapper resource="mybatis/mapper/todosMapper.xml"></mapper>
     </mappers>
 </configuration>
