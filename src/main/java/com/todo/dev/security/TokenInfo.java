@@ -17,7 +17,9 @@ public class TokenInfo {
     public TokenInfo parseToken(Claims claims) {
         Integer id = (Integer) claims.get("id");
         String name = (String) claims.get("name");
-        String phone_number = (String) claims.get("phone_number");
+        String phone_number = (String) claims.get("phoneNumber");
+
+        System.out.println(phone_number);
 
         return new TokenInfo(id,name,phone_number);
     }
