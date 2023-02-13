@@ -14,5 +14,6 @@
     <mappers>
         <mapper resource="mybatis/mapper/memberMapper.xml"></mapper>
         <mapper resource="mybatis/mapper/todosMapper.xml"></mapper>
+        <mapper resource="mybatis/mapper/friendMapper.xml"></mapper>
     </mappers>
 </configuration>
