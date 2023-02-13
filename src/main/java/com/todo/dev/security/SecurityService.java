@@ -2,7 +2,6 @@ package com.todo.dev.security;
 
 import com.todo.dev.domain.dto.Members;
 import io.jsonwebtoken.Claims;
-import lombok.AllArgsConstructor;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -34,7 +33,7 @@ public class SecurityService {
         Map<String,Object> map = new HashMap<>();
         map.put("id" , members.getId());
         map.put("name" , members.getName());
-        map.put("phoneNumber" , members.getPhone_number());
+        map.put("phoneNumber" , members.getPhoneNumber());
         return Jwts.builder().setClaims(map)
                 .signWith(key)
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(EXP_TIME)*24))

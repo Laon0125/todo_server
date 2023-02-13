@@ -19,7 +19,7 @@ public class MyTodosResponse {
 
     public MyTodosResponse(Todos todos) {
         this.id = todos.getId();
-        this.create_date = todos.getCreate_date();
+        this.create_date = todos.getCreateDate();
         this.content = todos.getContent();
         this.checked = todos.getChecked();
     }

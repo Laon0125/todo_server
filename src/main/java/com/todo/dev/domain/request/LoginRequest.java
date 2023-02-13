@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class LoginRequest {
-    private String member_id;
-    private String member_pw;
+    private String memberId;
+    private String memberPw;
 
 }
