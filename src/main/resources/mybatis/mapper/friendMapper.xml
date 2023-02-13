@@ -6,5 +6,6 @@
         INSERT INTO friends(my_id, target_id)
         value (#{myId}, #{targetId})
     </insert>
+
 </mapper>
 

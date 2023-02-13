@@ -1,9 +1,7 @@
 package com.todo.dev.repository;
 
+import com.todo.dev.domain.dto.FriendTodos;
 import com.todo.dev.domain.dto.Todos;
-import com.todo.dev.domain.dto.TodosPost;
-import com.todo.dev.domain.request.TodosPostRequest;
-import com.todo.dev.domain.response.HomeTodosResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +15,6 @@ public interface TodosRepository {
     List<Todos> allTodos (Integer memberId);
 
     List<Todos> myTodos (Integer memberId);
+
+    List<FriendTodos> getFriendTodos ( Integer myId);
 }

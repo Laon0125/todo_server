@@ -26,5 +26,16 @@
         where member_id = #{memberId}
         order by create_date desc
     </select>
+    <select id="getFriendTodos" resultType="FriendTodos">
+        SELECT
+        t.id, t.create_date, t.content, m.name
+        FROM todos as t
+        INNER JOIN friends as f
+        ON t.member_id = f.target_id
+        INNER JOIN members as m
+        on f.target_id = m.id
+        WHERE f.my_id = #{myId}
+        ORDER BY t.create_date DESC
+    </select>
 </mapper>
 
