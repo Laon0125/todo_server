@@ -1,21 +1,25 @@
 package com.todo.dev.controller;
 
+import com.todo.dev.domain.dto.Todos;
 import com.todo.dev.domain.dto.TodosPost;
 import com.todo.dev.domain.request.TodosPostRequest;
+import com.todo.dev.domain.response.HomeTodosResponse;
 import com.todo.dev.security.SecurityService;
 import com.todo.dev.security.TokenRequired;
 import com.todo.dev.service.TodosService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/todos")
-@TokenRequired
+
 public class TodosController {
     private final TodosService todosService;
     private final SecurityService securityService;
-    @PostMapping
+    @PostMapping @TokenRequired
     public Integer postTodos(@RequestBody TodosPostRequest request) {
         Integer memberId = securityService.parseToken(securityService.getToken()).getId();
         TodosPost todosPost = TodosPost
@@ -25,9 +29,15 @@ public class TodosController {
         return todosService.insertTodoService(todosPost);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") @TokenRequired
     public Integer checkTodos(@PathVariable("id") Integer id) {
         Integer memberId = securityService.parseToken(securityService.getToken()).getId();
         return todosService.checkTodo(id, memberId);
     }
+
+    @GetMapping("/home") @TokenRequired
+    public List<HomeTodosResponse> homeTodos () {
+        return todosService.homeTodos(securityService.parseToken(securityService.getToken()).getId());
+    }
+
 }

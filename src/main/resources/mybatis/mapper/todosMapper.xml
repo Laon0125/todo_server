@@ -14,5 +14,11 @@
         END
         where id = #{id} AND member_id = #{member_id}
     </update>
+    <select id="allTodos" resultType="Todos">
+        select  create_date, content, checked
+        from todos
+        where member_id != #{member_id}
+        order by create_date desc
+    </select>
 </mapper>
 

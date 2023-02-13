@@ -37,7 +37,7 @@ public class SecurityService {
         map.put("phoneNumber" , members.getPhone_number());
         return Jwts.builder().setClaims(map)
                 .signWith(key)
-                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(EXP_TIME)))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(EXP_TIME)*24))
                 .compact();
 
     }
