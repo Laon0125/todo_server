@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class TokenInfo {
     private Integer id;
     private String name;
-    private String phone_number;
+    private String phoneNumber;
 
     public TokenInfo parseToken(Claims claims) {
         Integer id = (Integer) claims.get("id");

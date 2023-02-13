@@ -1,16 +1,17 @@
 package com.todo.dev.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Builder @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class Todos {
     private Integer id;
-    private Integer member_id;
-    private LocalDateTime create_date;
+    private Integer memberId;
+    private LocalDateTime createDate;
     private String content;
-    private Boolean check;
+    private Boolean checked;
 }

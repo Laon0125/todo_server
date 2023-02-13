@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.todo.dev.repository.TodosRepository">
+    <insert id = "insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO todos(member_id, content)
+        VALUES (#{memberId},#{content})
+    </insert>
+    <update id="check" >
+        UPDATE todos
+        SET checked =
+        CASE WHEN  checked = 1  then 0
+        ELSE 1
+        END
+        where id = #{id} AND member_id = #{memberId}
+    </update>
+    <select id="allTodos" resultType="Todos">
+        select  create_date, content, checked
+        from todos
+        where member_id != #{memberId}
+        order by create_date desc
+    </select>
+    <select id="myTodos" resultType="Todos">
+        select  id, create_date, content, checked
+        from todos
+        where member_id = #{memberId}
+        order by create_date desc
+    </select>
+</mapper>
+

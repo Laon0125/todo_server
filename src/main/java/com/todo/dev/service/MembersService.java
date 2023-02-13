@@ -8,7 +8,6 @@ import com.todo.dev.repository.MembersRepository;
 import com.todo.dev.security.SecurityService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -18,12 +17,12 @@ public class MembersService {
 
     public MemberResponse loginService(LoginRequest request) {
         Members loginMember = membersRepository.login(request);
-        if (loginMember.getMember_id()!=null) {
+        if (loginMember.getMemberId()!=null) {
             String token = securityService.createToken(loginMember);
             return new MemberResponse(
                     loginMember.getId(),
                     loginMember.getName(),
-                    loginMember.getPhone_number(),
+                    loginMember.getPhoneNumber(),
                     token
             );
         }
@@ -34,7 +33,7 @@ public class MembersService {
     public MemberResponse signUpService(SignUpRequest request) {
         Integer insertId = membersRepository.signUp(request);
         if (insertId != 0) {
-            LoginRequest loginRequest = new LoginRequest(request.getMember_id(), request.getMember_pw());
+            LoginRequest loginRequest = new LoginRequest(request.getMemberId(), request.getMemberPw());
             return loginService(loginRequest);
         }
         return null;

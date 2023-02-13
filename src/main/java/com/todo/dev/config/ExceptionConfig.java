@@ -21,4 +21,10 @@ public class ExceptionConfig {
                 new ResponseEntity<>("token err", HttpStatus.UNAUTHORIZED);
         return responseEntity;
     }
+//    @ExceptionHandler (IllegalArgumentException.class)
+//    public ResponseEntity<String> noArgumentException() {
+//        ResponseEntity<String> responseEntity =
+//                new ResponseEntity<>("token is Null", HttpStatus.UNAUTHORIZED);
+//        return responseEntity;
+//    }
 }
